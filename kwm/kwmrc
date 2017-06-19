@@ -1,0 +1,72 @@
+// Variables
+define sound osascript /Users/jparus/.kwm/scripts/cycle_sound.scpt
+
+// Set default values for screen padding
+kwmc config padding 0 0 0 0
+
+// Set default values for container gaps
+kwmc config gap 0 0
+
+// Default tiling mode for Kwm (bsp | monocle | float | off)
+kwmc config tiling monocle
+
+// Let Kwm listen for hotkeys
+kwmc config hotkeys on
+
+// Automatically float windows that fail to resize
+kwmc config float-non-resizable on
+
+// Automatically resize the window to its container
+kwmc config lock-to-container on
+
+// Set focus-follows-mouse-mode to autoraise
+kwmc config focus-follows-mouse off
+
+/* The mouse will automatically move to the center
+   of the focused window */
+kwmc config mouse-follows-focus off
+
+// Allow window focus to wrap-around
+kwmc config cycle-focus screen
+
+// Set default container split-ratio
+kwmc config split-ratio 0.5
+
+// New splits become the left leaf-node
+kwmc config spawn left
+
+// Quit Kwm
+kwmc bindsym cmd+alt+ctrl-q quit
+
+// Cycle Sound Output
+kwmc bindsym ctrl+shift-s exec sound
+
+// Set Space Tiling Mode
+kwmc bindsym ctrl+shift-b space -t bsp
+kwmc bindsym ctrl+shift-m space -t monocle
+kwmc bindsym ctrl+shift-f space -t float
+
+// Rotate Window-Tree By 90degrees (Clockwise)
+kwmc bindsym cmd+ctrl-r tree rotate 90
+
+// Pseudo Containers
+kwmc bindsym cmd+ctrl-p tree -pseudo create
+kwmc bindsym cmd+ctrl-z tree -pseudo destroy
+
+// Give Focus To Window
+kwmc bindsym cmd+shift-j window -f west
+kwmc bindsym cmd+shift-l window -f east
+kwmc bindsym cmd+shift-k window -f south
+kwmc bindsym cmd+shift-i window -f north
+
+// Swap Focused Window
+kwmc bindsym alt+shift-j window -s west
+kwmc bindsym alt+shift-k window -s south
+kwmc bindsym alt+shift-i window -s north
+kwmc bindsym alt+shift-l window -s east
+
+// Detach Focused Window And Reinsert In Direction
+kwmc bindsym ctrl+shift-i window -m north
+kwmc bindsym ctrl+shift-l window -m east
+kwmc bindsym ctrl+shift-k window -m south
+kwmc bindsym ctrl+shift-j window -m west
